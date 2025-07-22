@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - LAPTOP ACADEMY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- شريط التنقل الجانبي -->
+        <aside class="sidebar">
+            <div class="logo">
+                <img src="images/LOGO  NEW-01.png" alt="LAPTOP ACADEMY" class="logo-image">
+                <h2>لوحة التحكم</h2>
+            </div>
+            <nav class="admin-nav">
+                <ul>
+                    <li class="active"><a href="#dashboard"><i class="fas fa-tachometer-alt"></i> لوحة التحكم</a></li>
+                    <li><a href="#products"><i class="fas fa-laptop"></i> إدارة المنتجات</a></li>
+                    <li><a href="#categories"><i class="fas fa-tags"></i> التصنيفات</a></li>
+                    <li><a href="#orders"><i class="fas fa-shopping-cart"></i> الطلبات</a></li>
+                    <li><a href="#customers"><i class="fas fa-users"></i> العملاء</a></li>
+                    <li><a href="#settings"><i class="fas fa-cog"></i> الإعدادات</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="main-content">
+            <!-- شريط التنقل العلوي -->
+            <header class="admin-header">
+                <div class="search-box">
+                    <input type="text" placeholder="بحث...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="admin-actions">
+                    <button class="notifications-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <div class="admin-profile">
+                        <img src="../images/admin-avatar.jpg" alt="صورة المشرف">
+                        <span>المشرف</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- قسم إدارة المنتجات -->
+            <section id="products-section" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-laptop"></i> إدارة المنتجات</h2>
+                    <button id="add-product-btn" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> إضافة منتج جديد
+                    </button>
+                </div>
+
+                <div class="products-table-container">
+                    <table class="products-table">
+                        <thead>
+                            <tr>
+                                <th>الصورة</th>
+                                <th>اسم المنتج</th>
+                                <th>الماركة</th>
+                                <th>السعر</th>
+                                <th>الكمية</th>
+                                <th>الحالة</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-table-body">
+                            <!-- سيتم ملؤها بالجافاسكريبت -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination">
+                    <button class="page-btn disabled" id="prev-page"><i class="fas fa-chevron-right"></i></button>
+                    <div class="page-numbers" id="page-numbers"></div>
+                    <button class="page-btn" id="next-page"><i class="fas fa-chevron-left"></i></button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal إضافة/تعديل منتج -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">إضافة منتج جديد</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="product-form">
+                    <input type="hidden" id="product-id">
+                    
+                    <div class="form-group">
+                        <label for="product-name">اسم المنتج</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-brand">الماركة</label>
+                            <select id="product-brand" required>
+                                <option value="">اختر الماركة</option>
+                                <option value="Apple">Apple</option>
+                                <option value="Dell">Dell</option>
+                                <option value="HP">HP</option>
+                                <option value="Lenovo">Lenovo</option>
+                                <option value="Asus">Asus</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product-condition">الحالة</label>
+                            <select id="product-condition" required>
+                                <option value="جديد">جديد</option>
+                                <option value="مستعمل">مستعمل</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-price">السعر (ج.م)</label>
+                            <input type="number" id="product-price" min="0" step="0.01" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product-original-price">السعر الأصلي (ج.م)</label>
+                            <input type="number" id="product-original-price" min="0" step="0.01">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-discount">الخصم (%)</label>
+                            <input type="number" id="product-discount" min="0" max="100" step="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="product-stock">الكمية المتاحة</label>
+                            <input type="number" id="product-stock" min="0" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-ram">الذاكرة العشوائية (GB)</label>
+                        <input type="number" id="product-ram" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-storage">سعة التخزين (GB)</label>
+                        <input type="number" id="product-storage" min="0">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-image">صورة المنتج</label>
+                        <input type="file" id="product-image" accept="image/*">
+                        <div id="image-preview" class="image-preview"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-description">الوصف</label>
+                        <textarea id="product-description" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline close-modal">إلغاء</button>
+                        <button type="submit" class="btn btn-primary">حفظ المنتج</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin.js" type="module"></script>
+</body>
+</html>

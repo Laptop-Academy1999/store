@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAPTOP ACADEMY | متجر اللابتوبات</title>
+    <meta name="description" content="متجر LAPTOP ACADEMY - أحدث أجهزة اللابتوب بأسعار تنافسية وضمان يصل إلى 3 سنوات">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/shop.css">
+    
+   
+</head>
+<body>
+    <!-- شريط التنقل -->
+     <nav class="navbar">
+    <div class="container">
+        <div class="nav-brand">
+    <a href="index.html" class="logo">
+        <div class="logo-content">
+            <img src="images/LOGO  NEW-01.png" alt="LAPTOP ACADEMY" class="logo-image">
+            <div class="logo-text">
+                <span class="logo-main-text">LAPTOP<span class="accent-text">ACADEMY</span></span>
+            </div>
+        </div>
+    </a>
+    <span class="tagline">خبرة تقنية تبدأ من هنا</span>
+</div>
+        
+        <div class="search-box">
+            <input type="text" placeholder="ابحث عن لابتوب أو إكسسوارات...">
+            <button type="submit" aria-label="بحث"><i class="fas fa-search"></i></button>
+            <div class="search-suggestions"></div>
+        </div>
+        
+        <div class="nav-links">
+            <a href="index.html" class="active"><i class="fas fa-home"></i> الرئيسية</a>
+            <a href="shop.html"><i class="fas fa-store"></i> المتجر</a>
+            <div class="dropdown">
+                <a href="#"><i class="fas fa-tools"></i> خدماتنا <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="repair.html"><i class="fas fa-wrench"></i> خدمات الإصلاح</a>
+                    <a href="maintenance.html"><i class="fas fa-cogs"></i> الصيانة الدورية</a>
+                    <a href="upgrade.html"><i class="fas fa-microchip"></i> ترقية المواصفات</a>
+                </div>
+            </div>
+            <a href="about.html"><i class="fas fa-info-circle"></i> عنا</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a>
+        </div>
+        
+        <div class="nav-icons">
+            <a href="wishlist.html" class="wishlist-icon" aria-label="قائمة الرغبات">
+                <i class="fas fa-heart"></i>
+                <span class="wishlist-count">0</span>
+            </a>
+            <a href="cart.html" class="cart-icon" aria-label="سلة التسوق">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </a>
+            <a href="account.html" class="user-icon" aria-label="حسابي"><i class="fas fa-user"></i></a>
+            <button class="menu-toggle" aria-label="القائمة"><i class="fas fa-bars"></i></button>
+        </div>
+    </div>
+</nav>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="shop-page">
+        <div class="container">
+            <div class="shop-header">
+                <h1>متجر اللابتوبات</h1>
+                <p class="subtitle">اختر من بين أحدث الموديلات بأفضل الأسعار</p>
+                
+                <div class="shop-filters">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">الكل</button>
+                        <button class="filter-btn" data-filter="new">جديد</button>
+                        <button class="filter-btn" data-filter="used">مستعمل</button>
+                        <button class="filter-btn" data-filter="gaming">جيمنج</button>
+                        <button class="filter-btn" data-filter="offers">عروض خاصة</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="shop-controls">
+                <div class="results-count" id="resultsCount">يتم تحميل المنتجات...</div>
+                <div class="sort-options">
+                    <select id="sortSelect" aria-label="ترتيب المنتجات">
+                        <option value="newest">الأحدث أولاً</option>
+                        <option value="price-asc">السعر: من الأقل للأعلى</option>
+                        <option value="price-desc">السعر: من الأعلى للأقل</option>
+                        <option value="rating">الأعلى تقييماً</option>
+                    </select>
+                </div>
+            </div>
+            
+            <section class="products-grid" id="productsContainer">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>جاري تحميل المنتجات...</p>
+                </div>
+            </section>
+            
+            <div class="pagination" id="paginationContainer">
+                <!-- سيتم ملؤها بالجافاسكريبت -->
+            </div>
+        </div>
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; <span id="currentYear"></span> LAPTOP ACADEMY. جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- الجافاسكريبت -->
+    <script src="js/shop.js"></script>
+    <script>
+        // سنة حقوق النشر التلقائية
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
